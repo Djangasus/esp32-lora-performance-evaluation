@@ -1,0 +1,12 @@
+# Ignore build output
+/out/build/
+
+# Ignore all files in the txtfiles folder
+txtfiles/*
+
+# Except the data_rds.txt and one experimental example of esp32-lora-espidf output
+!txtfiles/data_rds.txt
+!txtfiles/exp_PW05_SF07_BW125K_CI1_350ms.txt
+
+# Ignore editor-specific files
+.vscode/
