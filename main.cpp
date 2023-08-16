@@ -139,13 +139,16 @@ void DoubleCheck(const std::vector<std::pair<std::string,std::string>> &extracte
     
     size_t max_size = subbands[4].size();
     size_t accumulator = 0;
+    unsigned long long imageTime = 0;
     for (size_t i = 0; i < max_size; i++)
     {
+        imageTime += std::stoull(subbands[4][i].back().first) - std::stoull(subbands[0][i][0].first);
         for (size_t j = 0; j < 5; j++)
         {
             accumulator += subbands[j][i].size();
         }
     }
+    std::cout << "Average image time (ms): " << std::to_string(imageTime * 1.0 / (max_size * 1000000)) <<std::endl;
     std::cout << "Missing " << std::to_string(1246 * max_size - accumulator) << " of " << std::to_string(1246 * max_size) << ". In percentage: " << std::to_string((1246 * max_size - accumulator)*100.0/(1246 * max_size))<< std::endl; 
     std::cout << "" << std::endl;
 }
